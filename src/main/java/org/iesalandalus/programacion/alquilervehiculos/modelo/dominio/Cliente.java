@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Cliente {
 
-	private static final String ER_NOMBRE =  "([A-Z]{1}[a-z]+)\\s?([A-Z]{1}[a-z]+\\s*)*";
+	private static final String ER_NOMBRE = "([A-Z]{1}[a-z]+)\\s?([A-Z]{1}[a-z]+\\s*)*";
 	private static final String ER_DNI = "[0-9]{8}[A-Z]";
 	private static final String ER_TELEFONO = "[0-9]{9}";
 
