@@ -228,7 +228,7 @@ public class ModeloTest {
 		List<Cliente> clientesDevueltos = new ArrayList<>();
 		clientesDevueltos.add(cliente);
 		when(clientes.get()).thenReturn(clientesDevueltos);
-		List<Cliente> clientesExistentes = modelo.getClientes();
+		List<Cliente> clientesExistentes = modelo.getcoleccionClientes();
 		verify(clientes).get();
 		assertNotSame(cliente, clientesExistentes.get(0));
 	}
