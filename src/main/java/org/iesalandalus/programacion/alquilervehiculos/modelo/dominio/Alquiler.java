@@ -95,7 +95,6 @@ public class Alquiler {
 		}
 
 		setFechaDevolucion(fechaDevolucion);
-		this.fechaDevolucion = fechaDevolucion;
 	}
 
 	public int getPrecio() {
