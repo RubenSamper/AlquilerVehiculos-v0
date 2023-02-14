@@ -17,7 +17,9 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.Alquileres;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.Clientes;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.Turismos;
@@ -28,9 +30,6 @@ import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import fechasTiempos.Alquiler;
-import fechasTiempos.Turismo;
 
 public class ModeloTest {
 	

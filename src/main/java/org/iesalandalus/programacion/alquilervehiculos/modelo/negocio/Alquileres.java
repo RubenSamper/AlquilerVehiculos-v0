@@ -86,8 +86,9 @@ public class Alquileres {
 		if (alquiler == null) {
 			throw new NullPointerException("ERROR: No se puede devolver un alquiler nulo.");
 		}
-		int indice = coleccionAlquileres.indexOf(alquiler);
-		if (indice == -1) {
+		
+		Alquiler aux = buscar(alquiler);
+		if (aux == null) {
 			throw new OperationNotSupportedException("ERROR: No existe ningún alquiler igual.");
 		}
 		alquiler.devolver(fechaDevolucion);
