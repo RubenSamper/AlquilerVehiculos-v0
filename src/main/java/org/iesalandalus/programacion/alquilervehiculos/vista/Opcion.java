@@ -1,7 +1,5 @@
 package org.iesalandalus.programacion.alquilervehiculos.vista;
 
-import javax.naming.OperationNotSupportedException;
-
 public enum Opcion {
 
 	SALIR("Salir"), INSERTAR_CLIENTE("Insertar cliente"), INSERTAR_TURISMO("Insertar turismo"),
