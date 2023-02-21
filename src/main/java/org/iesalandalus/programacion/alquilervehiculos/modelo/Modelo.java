@@ -35,55 +35,51 @@ public class Modelo {
 
 	}
 
-	public void insertar(Cliente cliente) {
-		try {
-			clientes.insertar(new Cliente(cliente));
-		} catch (OperationNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void insertar(Cliente cliente) throws OperationNotSupportedException {
+		clientes.insertar(new Cliente(cliente));
 	}
 
-	public void insertar(Alquiler alquiler) throws OperationNotSupportedException {		
-		if(alquiler == null) {
+	public void insertar(Alquiler alquiler) throws OperationNotSupportedException {
+		if (alquiler == null) {
 			throw new NullPointerException("ERROR: No se puede realizar un alquiler nulo.");
 		}
-		
+
 		Cliente auxCliente = clientes.buscar(alquiler.getCliente());
-		if(auxCliente == null) {
+		if (auxCliente == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el cliente del alquiler.");
 		}
-		
+
 		Turismo auxTurismo = turismos.buscar(alquiler.getTurismo());
-		if(auxTurismo == null) {
+		if (auxTurismo == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el turismo del alquiler.");
 		}
-		
-		Alquiler auxAlquiler = new Alquiler(auxCliente, auxTurismo, alquiler.getFechaAlquiler());
 
-		try {
-			alquileres.insertar(auxAlquiler);
-		} catch (OperationNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Alquiler auxAlquiler = new Alquiler(auxCliente, auxTurismo, alquiler.getFechaAlquiler());
+		alquileres.insertar(auxAlquiler);
 	}
 
-	public void insertar(Turismo turismo) {
-		try {
-			turismos.insertar(new Turismo(turismo));
-		} catch (OperationNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void insertar(Turismo turismo) throws OperationNotSupportedException {
+		turismos.insertar(new Turismo(turismo));
 	}
 
 	public Cliente buscar(Cliente cliente) {
-		return clientes.buscar(cliente);
+		Cliente aux = null;
+		Cliente buscarCliente = clientes.buscar(cliente);
+
+		if (buscarCliente != null) {
+			aux = new Cliente(buscarCliente);
+		}
+		return aux;
 	}
 
 	public Turismo buscar(Turismo turimos) {
-		return turismos.buscar(turimos);
+		Turismo aux = null;
+		Turismo buscarTurismo = turismos.buscar(turimos);
+
+		if (buscarTurismo != null) {
+			aux = new Turismo(buscarTurismo);
+		}
+		return aux;
 	}
 
 	public Alquiler buscar(Alquiler alquiler) {
@@ -96,28 +92,28 @@ public class Modelo {
 
 	public void devolver(Alquiler alquiler, LocalDate fechaDevolucion) throws OperationNotSupportedException {
 		Alquiler aux = alquileres.buscar(alquiler);
-		if(aux == null) {
+		if (aux == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el alquiler a devolver.");
 		}
-		
+
 		aux.devolver(fechaDevolucion);
 	}
 
 	public void borrar(Cliente cliente) throws OperationNotSupportedException {
 		List<Alquiler> alquileresCliente = alquileres.get(cliente);
-		for(Alquiler aux : alquileresCliente) {
+		for (Alquiler aux : alquileresCliente) {
 			borrar(aux);
 		}
-		
+
 		clientes.borrar(cliente);
 	}
 
 	public void borrar(Turismo turismo) throws OperationNotSupportedException {
 		List<Alquiler> alquileresTurismo = alquileres.get(turismo);
-		for(Alquiler aux : alquileresTurismo) {
+		for (Alquiler aux : alquileresTurismo) {
 			borrar(aux);
 		}
-		
+
 		turismos.borrar(turismo);
 	}
 
@@ -171,8 +167,8 @@ public class Modelo {
 		}
 		return listaTemporal;
 	}
-	
-	public List<Cliente> getcoleccionClientes(){
+
+	public List<Cliente> getcoleccionClientes() {
 		List<Cliente> listaTemporal = new ArrayList<>();
 		for (Cliente cliente : clientes.get()) {
 			listaTemporal.add(new Cliente(cliente));

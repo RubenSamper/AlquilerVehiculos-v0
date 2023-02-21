@@ -21,27 +21,27 @@ public class Consola {
 	public static void mostrarCabecera(String mensaje) {
 		StringBuilder cabecera = new StringBuilder();
 		cabecera.append("-");
-		System.out.println(mensaje);
+		System.out.printf("%n%s%n", mensaje);
 		for (int i = 0; i < mensaje.length(); i++) {
 			System.out.print(cabecera);
 		}
-
+		System.out.println("");
 	}
 
 	public static void mostrarMenu() {
 		mostrarCabecera("menú");
 		for (int i = 0; i < Opcion.values().length; i++) {
-			System.out.printf("%d.-%s", i, Opcion.values()[i]);
+			System.out.printf("%d.-%s %n", i, Opcion.values()[i]);
 		}
 	}
 
 	private static String leerCadena(String mensaje) {
-		System.out.println(mensaje);
+		System.out.print(mensaje);
 		return Entrada.cadena();
 	}
 
 	private static Integer leerEntero(String mensaje) {
-		System.out.println(mensaje);
+		System.out.print(mensaje);
 		return Entrada.entero();
 	}
 
@@ -49,7 +49,7 @@ public class Consola {
 		LocalDate aux = null;
 
 		try {
-			System.out.println(mensaje);
+			System.out.print(mensaje);
 			aux = LocalDate.parse(Entrada.cadena(), FORMATO_FECHA);
 		} catch (DateTimeParseException e) {
 			System.out.println(e.getMessage());
@@ -76,8 +76,6 @@ public class Consola {
 	}
 
 	public static Cliente leerClienteDni() {
-		Cliente.getClienteConDni(leerCadena("Introduce un dni: "));
-
 		return Cliente.getClienteConDni(leerCadena("Introduce un dni: "));
 
 	}
